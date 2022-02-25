@@ -1,8 +1,19 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import type { AppProps } from "next/app";
+import { createHash } from "crypto";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+const StyledDiv = styled.div``;
 
-export default MyApp
+const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
+  createHash("sha256")
+  return (
+    <StyledDiv>
+      <Component {...pageProps} key="a"/>
+    </StyledDiv>
+  );
+};
+
+App.displayName = "App";
+
+export default App;
